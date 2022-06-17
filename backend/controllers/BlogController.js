@@ -54,11 +54,10 @@ const deleteBlog = asyncHandler(async(req, res) => {
         throw new Error("Blog does not exists")
     }
 
-    const deleteBlog = await Blog.findByIdAndDelete(blogID);
+    await isBlogExists.remove();
 
     res.status(200).json({
-        message: "deleted blog",
-        deletedBlog: deleteBlog
+        message: "deleted blog"
     });
 });
 
