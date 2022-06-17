@@ -1,10 +1,12 @@
-const getBlogs = (req, res) => {
+const asyncHandler = require('express-async-handler');
+
+const getBlogs = asyncHandler(async(req, res) => {
     res.status(200).json({
         message: "get blogs"
     });
-}
+})
 
-const createBlog = (req, res) => {
+const createBlog = asyncHandler(async(req, res) => {
     if (!req.body.text) {
         res.status(400);
         throw new Error("Please add text")
@@ -12,19 +14,19 @@ const createBlog = (req, res) => {
     res.status(200).json({
         message: "created blog"
     });
-}
+})
 
-const updateBlog = (req, res) => {
+const updateBlog = asyncHandler(async(req, res) => {
     res.status(200).json({
         message: "updated Blog"
     });
-}
+})
 
-const deleteBlog = (req, res) => {
+const deleteBlog = asyncHandler(async(req, res) => {
     res.status(200).json({
         message: "deleted blog"
     });
-}
+});
 
 
 module.exports = {
