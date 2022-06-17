@@ -5,6 +5,10 @@ const getBlogs = (req, res) => {
 }
 
 const createBlog = (req, res) => {
+    if (!req.body.text) {
+        res.status(400);
+        throw new Error("Please add text")
+    }
     res.status(200).json({
         message: "created blog"
     });
