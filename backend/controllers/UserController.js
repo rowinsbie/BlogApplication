@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const User = require('../model/UserModel');
-
+let bcrypt = require('bcrypt');
 
 const createUser = asyncHandler(async(req,res) => {
     
@@ -8,7 +8,7 @@ const createUser = asyncHandler(async(req,res) => {
         first_name:req.body.first_name,
         last_name:req.body.last_name,
         username:req.body.username,
-        password:req.body.password
+        password:bcrypt.hashSync(req.body.password,11)
     });
 
     res.json({
