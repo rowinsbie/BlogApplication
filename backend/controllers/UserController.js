@@ -5,12 +5,12 @@ let bcrypt = require('bcrypt');
 const createUser = asyncHandler(async(req, res) => {
 
     // check if user already exists
-    // const { username } = req.body;
-    // const isUserExists = await User.find({ username })
-    // if (isUserExists) {
-    //     res.status(400);
-    //     throw new Error("User already exists");
-    // }
+    const { username } = req.body;
+    const isUserExists = await User.findOne({username:username })
+    if (isUserExists) {
+        res.status(400);
+        throw new Error("User already exists");
+    }
     // hash the password
 
     const salt = await bcrypt.genSalt(10);
