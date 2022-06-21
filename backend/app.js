@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/blogs', require('./routes/Blogs'));
-app.use('/api/auth', require('./routes/Auth'));
 app.use('/api/user', require('./routes/User'));
 
 app.use(errorMiddleware);
