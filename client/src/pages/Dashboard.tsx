@@ -1,8 +1,8 @@
 const Dashboard = () => {
   return (
     <>
-<h1 className="underline">
-    Hello world!
+<h1 className="underline text-red-500">
+    Hello fuck!
   </h1>    </>
   );
 };
