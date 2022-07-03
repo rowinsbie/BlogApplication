@@ -20,6 +20,7 @@ const createBlog = asyncHandler(async(req, res) => {
     }
 
     const NewBlog = await Blog.create({
+        user:req.body.id,
         title: req.body.title,
         content: req.body.content
     });
@@ -37,13 +38,16 @@ const updateBlog = asyncHandler(async(req, res) => {
         res.status(404);
         throw new Error("Blog not found")
     }
-    const updateBlog = await Blog.findOneAndUpdate(blogID, req.body, {
-        new: true
-    })
-    res.status(200).json({
-        message: "updated Blog",
-        blog: updateBlog
-    });
+    
+        await Blog.findOneAndUpdate({id:blogID,user:req.body.userID}, req.body, {
+            new:true
+        })
+        res.status(200).json({
+            message:"Blog has been updated"
+        });
+   
+   
+   
 })
 
 const deleteBlog = asyncHandler(async(req, res) => {
